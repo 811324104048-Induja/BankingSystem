@@ -13,21 +13,20 @@ class Account {
     }
 }
 
-public class Bankingsystem {
+public class Bankingsystem{
 
     // Account Number -> Account Object
-    static HashMap<Integer, Account> accounts = new HashMap<>();
+    static LinkedHashMap<Integer, Account> accounts = new LinkedHashMap<>();
 
     static Scanner sc = new Scanner(System.in);
 
-    // CREATE ACCOUNT
+
     public static void createAccount() {
 
         System.out.print("Enter Account Number: ");
         int accNo = sc.nextInt();
         sc.nextLine();
 
-        // Check whether account already exists
         if (accounts.containsKey(accNo)) {
             System.out.println("Account already exists!");
             return;
@@ -51,7 +50,7 @@ public class Bankingsystem {
         System.out.println("Account created successfully!");
     }
 
-    // DEPOSIT
+ 
     public static void deposit() {
 
         System.out.print("Enter Account Number: ");
@@ -78,7 +77,7 @@ public class Bankingsystem {
         System.out.println("Updated Balance: " + acc.balance);
     }
 
-    // WITHDRAW
+  
     public static void withdraw() {
 
         System.out.print("Enter Account Number: ");
@@ -108,7 +107,7 @@ public class Bankingsystem {
         }
     }
 
-    // CHECK BALANCE
+    
     public static void checkBalance() {
 
         System.out.print("Enter Account Number: ");
@@ -127,27 +126,27 @@ public class Bankingsystem {
         System.out.println("Balance        : " + acc.balance);
     }
 
-    // DISPLAY ALL ACCOUNTS
-    public static void displayAccounts() {
+    
+    public static void viewAccounts() {
 
         if (accounts.isEmpty()) {
             System.out.println("No accounts available!");
             return;
         }
 
-        System.out.println("\n----- ALL ACCOUNTS -----");
+        System.out.println("\n===== ALL ACCOUNT DETAILS =====");
 
+        // LinkedHashMap maintains insertion order
         for (Account acc : accounts.values()) {
 
-            System.out.println(
-                "Account No: " + acc.accNo +
-                " | Name: " + acc.name +
-                " | Balance: " + acc.balance
-            );
+            System.out.println("-----------------------------");
+            System.out.println("Account Number : " + acc.accNo);
+            System.out.println("Account Holder : " + acc.name);
+            System.out.println("Balance        : " + acc.balance);
         }
     }
 
-    // MAIN METHOD
+ 
     public static void main(String[] args) {
 
         while (true) {
@@ -157,7 +156,7 @@ public class Bankingsystem {
             System.out.println("2. Deposit");
             System.out.println("3. Withdraw");
             System.out.println("4. Check Balance");
-            System.out.println("5. Display All Accounts");
+            System.out.println("5. View All Accounts");
             System.out.println("6. Exit");
 
             System.out.print("Enter your choice: ");
@@ -182,7 +181,7 @@ public class Bankingsystem {
                     break;
 
                 case 5:
-                    displayAccounts();
+                    viewAccounts();
                     break;
 
                 case 6:
