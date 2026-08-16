@@ -13,13 +13,12 @@ class Account {
     }
 }
 
-public class Bankingsystem{
+public class Bankingsystem {
 
     // Account Number -> Account Object
-    static LinkedHashMap<Integer, Account> accounts = new LinkedHashMap<>();
+    static TreeMap<Integer, Account> accounts = new TreeMap<>();
 
     static Scanner sc = new Scanner(System.in);
-
 
     public static void createAccount() {
 
@@ -50,7 +49,6 @@ public class Bankingsystem{
         System.out.println("Account created successfully!");
     }
 
- 
     public static void deposit() {
 
         System.out.print("Enter Account Number: ");
@@ -77,7 +75,6 @@ public class Bankingsystem{
         System.out.println("Updated Balance: " + acc.balance);
     }
 
-  
     public static void withdraw() {
 
         System.out.print("Enter Account Number: ");
@@ -107,7 +104,6 @@ public class Bankingsystem{
         }
     }
 
-    
     public static void checkBalance() {
 
         System.out.print("Enter Account Number: ");
@@ -126,7 +122,6 @@ public class Bankingsystem{
         System.out.println("Balance        : " + acc.balance);
     }
 
-    
     public static void viewAccounts() {
 
         if (accounts.isEmpty()) {
@@ -136,7 +131,7 @@ public class Bankingsystem{
 
         System.out.println("\n===== ALL ACCOUNT DETAILS =====");
 
-        // LinkedHashMap maintains insertion order
+        // TreeMap automatically sorts accounts by Account Number
         for (Account acc : accounts.values()) {
 
             System.out.println("-----------------------------");
@@ -146,7 +141,6 @@ public class Bankingsystem{
         }
     }
 
- 
     public static void main(String[] args) {
 
         while (true) {
